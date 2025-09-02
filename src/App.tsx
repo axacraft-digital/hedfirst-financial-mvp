@@ -766,6 +766,39 @@ function App() {
           </div>
         </div>
 
+        <div className="bg-white p-8 rounded-lg shadow-md mb-8">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            Benchmark Against HIMS
+          </h2>
+          
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                <h3 className="text-lg font-semibold text-blue-800 mb-2">HIMS Year 5 (2017–2022)</h3>
+                <p className="text-2xl font-bold text-blue-700">$527M annual revenue</p>
+                <p className="text-sm text-blue-600">($44M/month)</p>
+              </div>
+              
+              <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
+                <h3 className="text-lg font-semibold text-green-800 mb-2">Your Year 5 Projection</h3>
+                <p className="text-2xl font-bold text-green-700">${Math.round(fiveYearProjections.monthlyProjections[59].totalRevenue * 12 / 1000000)}M annual revenue</p>
+                <p className="text-sm text-green-600">(${Math.round(fiveYearProjections.monthlyProjections[59].totalRevenue / 1000000)}M/month)</p>
+              </div>
+            </div>
+            
+            <div className="border-t pt-4 mt-4">
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-700 mb-2">
+                  <strong>Market Context:</strong> Today (2025), HIMS is running at <span className="text-blue-600 font-bold">~$182M/month</span> (~$2.3–$2.4B annualized)
+                </p>
+                <p className="text-sm text-gray-600">
+                  Our Year 5 projection is about <span className="text-orange-600 font-bold">one-third of their current scale</span>, representing a realistic market opportunity within the established telehealth landscape.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   )
