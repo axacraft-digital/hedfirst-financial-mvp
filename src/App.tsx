@@ -12,7 +12,7 @@ function App() {
   const [prescriptionAOVInput, setPrescriptionAOVInput] = useState(75)
   const [prescriptionCycleInput, setPrescriptionCycleInput] = useState(90)
   const [prescriptionChurnInput, setPrescriptionChurnInput] = useState(10)
-  const [prescriptionCACInput, setPrescriptionCACInput] = useState(50)
+  const [prescriptionCACInput, setPrescriptionCACInput] = useState(200)
   
   // Care Model Inputs
   const [startingCareMembersInput, setStartingCareMembersInput] = useState(50)
@@ -22,7 +22,7 @@ function App() {
   const [careDecayFactorInput, setCareDecayFactorInput] = useState(0.95)
   const [annualMembershipPriceInput, setAnnualMembershipPriceInput] = useState(699)
   const [membershipChurnInput, setMembershipChurnInput] = useState(10)
-  const [careCACInput, setCareCACInput] = useState(50)
+  const [careCACInput, setCareCACInput] = useState(200)
 
   useEffect(() => {
     updateInputs({ 

@@ -31,7 +31,7 @@ export const useFinancialModel = () => {
     prescriptionAOV: 75,
     prescriptionCycle: 90,
     prescriptionChurnRate: 10,
-    prescriptionCAC: 50,
+    prescriptionCAC: 200,
     
     // Care Model
     startingCareMembers: 50,
@@ -40,7 +40,7 @@ export const useFinancialModel = () => {
     careDecayFactor: 0.95,
     annualMembershipPrice: 699,
     membershipChurnRate: 10,
-    careCAC: 50
+    careCAC: 200
   })
 
 
