@@ -9,7 +9,7 @@ function App() {
   const [prescriptionInitialGrowthInput, setPrescriptionInitialGrowthInput] = useState(80)
   const [prescriptionMaturityGrowthInput, setPrescriptionMaturityGrowthInput] = useState(10)
   const [prescriptionDecayFactorInput, setPrescriptionDecayFactorInput] = useState(0.95)
-  const [prescriptionAOVInput, setPrescriptionAOVInput] = useState(75)
+  const [prescriptionAOVInput, setPrescriptionAOVInput] = useState(100)
   const [prescriptionCycleInput, setPrescriptionCycleInput] = useState(90)
   const [prescriptionChurnInput, setPrescriptionChurnInput] = useState(10)
   const [prescriptionCACInput, setPrescriptionCACInput] = useState(200)
@@ -568,6 +568,52 @@ function App() {
           </div>
         </div>
 
+        <div className="bg-white p-8 rounded-lg shadow-md mb-8">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            Revenue Mix by Year
+          </h2>
+          
+          <p className="text-sm text-gray-600 mb-6">
+            Percentage breakdown of revenue sources by year - shows business model evolution from prescription-driven to more balanced revenue streams.
+          </p>
+          
+          <div className="space-y-4">
+            {[1, 2, 3, 4, 5].map(year => {
+              const monthIndex = (year * 12) - 1 // Convert year to month index (0-indexed)
+              const projection = fiveYearProjections.monthlyProjections[monthIndex]
+              const prescriptionPercentage = Math.round((projection.prescriptionRevenue / projection.totalRevenue) * 100)
+              const carePercentage = 100 - prescriptionPercentage
+              
+              return (
+                <div key={year} className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium text-gray-800">Year {year}</span>
+                    <div className="text-sm text-gray-600">
+                      <span className="text-green-600">{prescriptionPercentage}% Prescription</span>
+                      <span className="mx-2">|</span>
+                      <span className="text-blue-600">{carePercentage}% Care</span>
+                    </div>
+                  </div>
+                  <div className="flex w-full h-8 bg-gray-200 rounded-lg overflow-hidden">
+                    <div 
+                      className="bg-green-500 flex items-center justify-center text-white text-sm font-medium"
+                      style={{ width: `${prescriptionPercentage}%` }}
+                    >
+                      {prescriptionPercentage >= 15 ? `${prescriptionPercentage}%` : ''}
+                    </div>
+                    <div 
+                      className="bg-blue-500 flex items-center justify-center text-white text-sm font-medium"
+                      style={{ width: `${carePercentage}%` }}
+                    >
+                      {carePercentage >= 15 ? `${carePercentage}%` : ''}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
         {/* Customer Base Projections Card - Commented out for now */}
         {/*
         <div className="bg-white p-8 rounded-lg shadow-md mb-8">
@@ -788,12 +834,26 @@ function App() {
             
             <div className="border-t pt-4 mt-4">
               <div className="text-center p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Market Context:</strong> Today (2025), HIMS is running at <span className="text-blue-600 font-bold">~$182M/month</span> (~$2.3–$2.4B annualized)
-                </p>
-                <p className="text-sm text-gray-600">
-                  Our Year 5 projection is about <span className="text-orange-600 font-bold">one-third of their current scale</span>, representing a realistic market opportunity within the established telehealth landscape.
-                </p>
+                {(() => {
+                  const hedfirstAnnualRevenue = fiveYearProjections.monthlyProjections[59].totalRevenue * 12
+                  const himsCurrentAnnual = 2400000000 // $2.4B current HIMS scale
+                  const comparisonPercentage = Math.round((hedfirstAnnualRevenue / himsCurrentAnnual) * 100)
+                  const fractionText = comparisonPercentage <= 25 ? 'one-quarter' : 
+                                     comparisonPercentage <= 35 ? 'one-third' :
+                                     comparisonPercentage <= 55 ? 'half' :
+                                     comparisonPercentage <= 75 ? 'two-thirds' : 'comparable to'
+                  
+                  return (
+                    <>
+                      <p className="text-sm text-gray-700 mb-2">
+                        <strong>Market Context:</strong> Today (2025), HIMS is running at <span className="text-blue-600 font-bold">~$182M/month</span> (~$2.3–$2.4B annualized)
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        Our Year 5 projection is about <span className="text-orange-600 font-bold">{fractionText} ({comparisonPercentage}%) of their current scale</span>, representing a realistic market opportunity within the established telehealth landscape.
+                      </p>
+                    </>
+                  )
+                })()}
               </div>
             </div>
           </div>
