@@ -568,13 +568,15 @@ function App() {
           </div>
         </div>
 
+        {/* Customer Base Projections Card - Commented out for now */}
+        {/*
         <div className="bg-white p-8 rounded-lg shadow-md mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-            Annual Revenue Summary
+            Customer Base Projections
           </h2>
           
           <p className="text-sm text-gray-600 mb-6">
-            Year-end revenue totals for simplified annual planning and investor presentation.
+            Customer acquisition required to achieve projected revenue targets, accounting for growth rates and churn.
           </p>
           
           <div className="overflow-x-auto">
@@ -582,10 +584,9 @@ function App() {
               <thead>
                 <tr className="border-b-2 border-gray-200">
                   <th className="text-left py-3 px-4 font-semibold text-gray-800">Year</th>
-                  <th className="text-right py-3 px-4 font-semibold text-gray-800">Prescription Revenue</th>
-                  <th className="text-right py-3 px-4 font-semibold text-gray-800">Care Revenue</th>
-                  <th className="text-right py-3 px-4 font-semibold text-gray-800">Total Revenue</th>
-                  <th className="text-right py-3 px-4 font-semibold text-gray-800">Net Revenue (after CAC)</th>
+                  <th className="text-right py-3 px-4 font-semibold text-gray-800">Prescription Customers</th>
+                  <th className="text-right py-3 px-4 font-semibold text-gray-800">Care Members</th>
+                  <th className="text-right py-3 px-4 font-semibold text-gray-800">Total Customers</th>
                 </tr>
               </thead>
               <tbody>
@@ -598,16 +599,13 @@ function App() {
                         Year {year}
                       </td>
                       <td className="py-3 px-4 text-right text-green-600 font-medium">
-                        ${projection.prescriptionRevenue.toLocaleString()}
+                        {projection.prescriptionCustomers.toLocaleString()}
                       </td>
                       <td className="py-3 px-4 text-right text-blue-600 font-medium">
-                        ${projection.careRevenue.toLocaleString()}
+                        {projection.careMembers.toLocaleString()}
                       </td>
                       <td className="py-3 px-4 text-right text-gray-900 font-bold">
-                        ${projection.totalRevenue.toLocaleString()}
-                      </td>
-                      <td className="py-3 px-4 text-right text-emerald-700 font-bold">
-                        ${projection.netRevenue.toLocaleString()}
+                        {(projection.prescriptionCustomers + projection.careMembers).toLocaleString()}
                       </td>
                     </tr>
                   )
@@ -616,6 +614,8 @@ function App() {
             </table>
           </div>
         </div>
+        */}
+
 
         <div className="bg-white p-8 rounded-lg shadow-md mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">
