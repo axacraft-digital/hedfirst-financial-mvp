@@ -780,7 +780,7 @@ function App() {
               </div>
               
               <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
-                <h3 className="text-lg font-semibold text-green-800 mb-2">Your Year 5 Projection</h3>
+                <h3 className="text-lg font-semibold text-green-800 mb-2">Hedfirst Year 5 Projection</h3>
                 <p className="text-2xl font-bold text-green-700">${Math.round(fiveYearProjections.monthlyProjections[59].totalRevenue * 12 / 1000000)}M annual revenue</p>
                 <p className="text-sm text-green-600">(${Math.round(fiveYearProjections.monthlyProjections[59].totalRevenue / 1000000)}M/month)</p>
               </div>
